@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sanitize } from '../parsers/sanitize_input';
 
 export default class MarkdownTranslater extends React.Component {
     constructor(props) {
@@ -14,7 +15,16 @@ export default class MarkdownTranslater extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        //alert('A name was submitted: ' + this.state.value);
+
+        //handle data
+        //https://facebook.github.io/react/docs/introducing-jsx.html#jsx-prevents-injection-attacks
+        //By default, React DOM escapes any values embedded in JSX before rendering them. 
+        //Thus it ensures that you can never inject anything that's not explicitly written in your application.
+        // Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
+        // We also want to sanitize the input for to remove any illegal characters
+
+        alert(sanitize(this.state.value));
         event.preventDefault();
     }
 
