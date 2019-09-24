@@ -1,34 +1,12 @@
-//markdown array
-markdown = { '#': '<h1>', '##': '<h2>', };
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
+ReactDOM.render(<App />, document.getElementById('root'));
 
-
-data = ["We have a new string # Heading 1", "## Heading 1"];
-
-
-//console.log(data.search('Heading'));
-
-
-data.forEach(element => {
-
-    const match = element.search('Heading') != -1;
-
-
-    //if the first character of the element is a match
-    //return true
-    //replace the character at index with the value of the key
-    //return false
-    //don't do anything 
-
-
-
-    if (match) {
-        //we have a match
-        console.log(match);
-    } else {
-        //we don't have a match 
-
-    }
-    console.log(element);
-
-});
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
