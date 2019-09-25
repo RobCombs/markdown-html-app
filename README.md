@@ -1,7 +1,8 @@
 # Markdown to HTML app
 
-A simple web page app build with React and Node to convert markdown syntax into html.  
-It
+A simple web page app built with React and Node to convert markdown syntax into html. This web app
+takes a few use cases for converting markdown into html. It sanitizes the input and dynamically replaces each
+markdown tag defined in the 'data/markdown_schema.js' file into their corresponding html entities. There are also unit tests that can be ran with Mocha and Chai covering the main features. Also, this project has been set up with a modern front end pipeline setup.  It features Babel, Webpage, hot module reloading, dev/prod builds, etc.
 
 ## Getting Started
 
@@ -44,6 +45,7 @@ npm install
 This app uses Mocha and Chai for running tests.
 Use npm test to execute the test suite.
 
+```
 These are the tests:
 const assert = require('assert');
 
@@ -58,6 +60,7 @@ assert.equal(getHTML(input), '<h1>how are you?</h1>');
 
 input = '######how are you?';
 assert.equal(getHTML(input), '<h6>how are you?</h6>');
+```
 
 ## License
 
