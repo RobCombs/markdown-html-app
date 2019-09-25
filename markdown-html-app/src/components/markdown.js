@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { sanitize } from '../parsers/sanitize_input';
+import { getMarkDown } from '../helpers/markdown';
+const fs = require('fs');
+
 
 export default class MarkdownTranslater extends React.Component {
     constructor(props) {
@@ -15,18 +18,40 @@ export default class MarkdownTranslater extends React.Component {
     }
 
     handleSubmit(event) {
-        //alert('A name was submitted: ' + this.state.value);
+        //remove illegal characters and rely on React to validate and escape the values
+        //debugger;
+        //alert(fs.readFileSync('../data/markdown_schema.json'));
 
-        //handle data
-        //https://facebook.github.io/react/docs/introducing-jsx.html#jsx-prevents-injection-attacks
-        //By default, React DOM escapes any values embedded in JSX before rendering them. 
-        //Thus it ensures that you can never inject anything that's not explicitly written in your application.
-        // Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
-        // We also want to sanitize the input for to remove any illegal characters
 
-        alert(sanitize(this.state.value));
+
+
+        // alert(sanitize(this.state.value));
+        //alert(getMarkDown('../data/markdown_schema.json'));
+
         event.preventDefault();
     }
+
+    componentDidMount(event) {
+        let markdown = {
+            "#": "<h1>", //header
+            "*": "<i>", //italics
+            "**": "<strong>" //bold
+        };
+        //let input = this.state.value;
+        let input = '#how are you?';
+
+        for (let key in markdown) {
+            //lastIndexOf is for Frankie to avoid looping though 6 hashtags :)
+            let index = input.lastIndexOf(key);
+            if (index > -1) {
+                //debugger;
+                alert(input.replace(input.substring(0, index), markdown[key]));
+            }
+        }
+
+    }
+
+
 
     render() {
         return (
