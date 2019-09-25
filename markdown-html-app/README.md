@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Markdown to HTML app
 
-## Available Scripts
+A simple web page app build with React and Node to convert markdown syntax into html.  
+It
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+Just go the this url: http://d3c74a8f.ngrok.io/ and click around.  You can also use the installation 
+instructions below to run this program locally.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A computer :)
 
-### `npm test`
+Here are some examples of what to expect.
+```
+input = '*how are you?'
+html = <i>how are you?</i>'
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+input = '>how are you?'
+html = <blockquote>how are you?</blockquote>
 
-### `npm run build`
+input = '#how are you?'
+html = <h1>how are you?</h1>'
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+input = '######how are you?'
+html = '<h6>how are you?</h6>'
+```
+If you want to install it locally, Node is a prerequisite.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Installing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone this repo
 
-### `npm run eject`
+```
+cd into the project directory
+```
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Running the tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This app uses Mocha and Chai for running tests.
+Use npm test to execute the test suite.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+These are the tests:
+const assert = require('assert');
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+let input = '*how are you?';
+assert.equal(getHTML(input), '<i>how are you?</i>');
 
-## Learn More
+input = '>how are you?';
+assert.equal(getHTML(input), '<blockquote>how are you?</blockquote>');
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+input = '#how are you?';
+assert.equal(getHTML(input), '<h1>how are you?</h1>');
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+input = '######how are you?';
+assert.equal(getHTML(input), '<h6>how are you?</h6>');
 
-### Code Splitting
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-### Analyzing the Bundle Size
+## Acknowledgments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Mail Chimp for the fun interview!

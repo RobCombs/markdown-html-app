@@ -2,44 +2,56 @@
 import React, { Component } from 'react';
 import { sanitize } from '../parsers/sanitize_input';
 import { getHTML } from '../parsers/markdown_html';
+import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
 
 export default class MarkdownTranslater extends React.Component {
     constructor(props) {
         super(props);
         this.state = { value: '' };
-
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleChange(value) {
+        let html = "";
+        this.setState({ value: value });
+        html = getHTML(sanitize(value));
+        document.getElementById("Results").innerHTML = html;
+        //alert(value);
     }
 
     handleSubmit(event) {
-
-
         event.preventDefault();
     }
 
     componentDidMount(event) {
         //let input = this.state.value;
         let input = '*how are you?';
-        let html = "";
-        //remove illegal characters and rely on React to validate and escape the values
+
         //This validation/sanitization is for Shounak to get the code production ready :)
-        html = getHTML(sanitize(input));
+        //remove illegal characters and rely on React to validate and escape the values
+        //it's pretty bullet proof with predefined values but form values can still be spoofed
+
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="Radio">
+                <RadioGroup onChange={this.handleChange} horizontal >
+                    <ReversedRadioButton value="*how are you?" className="Radio">
+                        *how are you?
+                    </ReversedRadioButton>
+                    <ReversedRadioButton value="#how are you?">
+                        #how are you?
+                    </ReversedRadioButton>
+                    <ReversedRadioButton value=">how are you?">
+                        >how are you?
+                    </ReversedRadioButton>
+                    <ReversedRadioButton value="###how are you?">
+                        ###how are you?
+                    </ReversedRadioButton>
+                </RadioGroup>
+
+            </div >
         );
     }
 }

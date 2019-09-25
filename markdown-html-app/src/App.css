@@ -20,3 +20,40 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Page {
+  background-color: #fbeeca;
+}
+
+.Button {
+  background-color: #007c89;
+}
+
+.Container {
+  width: 80%;
+  height: 200px;
+  background-color: #fbeeca;
+  margin: auto;
+  padding: 10px;
+}
+
+.Logo {
+  width: 15%;
+  height: 200px;
+  float: left;
+}
+
+.Buttons {
+  margin-left: 15%;
+  height: 100px;
+}
+
+.Results {
+  text-align: center;
+  padding-top: 10px;
+  height: 50px;
+}
+
+div {
+  color: black;
+}
